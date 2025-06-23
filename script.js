@@ -36,4 +36,11 @@ function blowOutCandles() {
 
     const message = document.getElementById("message");
     if (message) message.style.display = "block";
+
+    // Konfeti patlat
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
