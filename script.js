@@ -1,8 +1,9 @@
 let hasBlown = false;
+let micStream = null; // stream saklanacak
 
-// Mikrofon izni ve ses analizi
 navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => {
+        micStream = stream; // global değişkene kaydet
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const mic = audioContext.createMediaStreamSource(stream);
         const analyser = audioContext.createAnalyser();
@@ -16,13 +17,15 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             analyser.getByteTimeDomainData(data);
             const volume = Math.max(...data.map(v => Math.abs(v - 128))) / 128;
 
-            if (volume > 0.3 && !hasBlown) {  // Bu eşik sesi algılamak için yeterli ve daha önce üflenmedi
+            if (volume > 0.3 && !hasBlown) {
                 hasBlown = true;
                 console.log("Üfleme algılandı!");
                 blowOutCandles();
             }
 
-            requestAnimationFrame(detectBlow);
+            if (!hasBlown) {
+                requestAnimationFrame(detectBlow);
+            }
         }
 
         detectBlow();
@@ -32,8 +35,13 @@ navigator.mediaDevices.getUserMedia({ audio: true })
         alert("Lütfen mikrofon izni verin, yoksa mumları üfleyemezsiniz 🎂🎤");
     });
 
-// Mumu söndür ve mesajı göster
 function blowOutCandles() {
+    // Mikrofona erişimi durdur
+    if (micStream) {
+        micStream.getTracks().forEach(track => track.stop());
+        console.log("Mikrofon kapatıldı.");
+    }
+
     const flame = document.querySelector(".flame");
     if (flame) {
         flame.style.transition = "opacity 1s ease-out";
@@ -43,13 +51,10 @@ function blowOutCandles() {
 
     const message = document.getElementById("message");
     if (message) {
-        // message.style.display = "block";
-        // message.style.animation = "fadeIn 1s ease-out";
         message.style.display = "block";
         message.style.animation = "none";
-        void message.offsetWidth; // Force reflow
+        void message.offsetWidth; // Reflow
         message.style.animation = "popIn 1s ease-out";
-
     }
 
     confetti({
