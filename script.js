@@ -1,3 +1,5 @@
+let hasBlown = false;
+
 // Mikrofon izni ve ses analizi
 navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => {
@@ -14,7 +16,8 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             analyser.getByteTimeDomainData(data);
             const volume = Math.max(...data.map(v => Math.abs(v - 128))) / 128;
 
-            if (volume > 0.3) {  // Bu eşik sesi algılamak için yeterli
+            if (volume > 0.3 && !hasBlown) {  // Bu eşik sesi algılamak için yeterli ve daha önce üflenmedi
+                hasBlown = true;
                 console.log("Üfleme algılandı!");
                 blowOutCandles();
             }
