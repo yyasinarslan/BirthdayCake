@@ -10,9 +10,9 @@ body {
     height: 200px;
     top: 50%;
     left: 50%;
-    margin-top: -70px;
-    margin-left: -125px;
+    transform: translate(-50%, -50%);
 }
+
 
 .cake > * {
     position: absolute;

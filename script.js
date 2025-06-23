@@ -17,7 +17,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             analyser.getByteTimeDomainData(data);
             const volume = Math.max(...data.map(v => Math.abs(v - 128))) / 128;
 
-            if (volume > 0.3 && !hasBlown) {
+            if (volume > 0.35 && !hasBlown) {
                 hasBlown = true;
                 console.log("Üfleme algılandı!");
                 blowOutCandles();
