@@ -43,8 +43,13 @@ function blowOutCandles() {
 
     const message = document.getElementById("message");
     if (message) {
+        // message.style.display = "block";
+        // message.style.animation = "fadeIn 1s ease-out";
         message.style.display = "block";
-        message.style.animation = "fadeIn 1s ease-out";
+        message.style.animation = "none";
+        void message.offsetWidth; // Force reflow
+        message.style.animation = "popIn 1s ease-out";
+
     }
 
     confetti({
