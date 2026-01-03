@@ -3,6 +3,8 @@ let micStream = null; // stream saklanacak
 let analyser = null;
 let data = null;
 let rafId = null;
+let blowHintTimeoutId = null;
+let blowHintEl = null;
 
 function qs(sel) {
     return document.querySelector(sel);
@@ -14,11 +16,68 @@ function showCakeAndHidePermission() {
 
     if (permissionScreen) permissionScreen.style.display = 'none';
     if (cake) cake.style.display = 'block';
+
+    // If user doesn't blow for 5 seconds after cake appears, show a gentle hint
+    scheduleBlowHint();
 }
 
 function setPermissionStatus(text) {
     const status = qs('#permission-status');
     if (status) status.textContent = text;
+}
+
+function ensureBlowHintElement() {
+    if (blowHintEl) return blowHintEl;
+
+    const cake = qs('#cake');
+    if (!cake) return null;
+
+    const el = document.createElement('div');
+    el.className = 'blow-hint';
+    el.textContent = 'Hadi üfle mumları artık 🤩';
+    el.style.display = 'none';
+
+    cake.appendChild(el);
+    blowHintEl = el;
+    return el;
+}
+
+function scheduleBlowHint() {
+    // Clear any previous timer
+    if (blowHintTimeoutId) {
+        clearTimeout(blowHintTimeoutId);
+        blowHintTimeoutId = null;
+    }
+
+    const el = ensureBlowHintElement();
+    if (el) {
+        el.style.display = 'none';
+        el.classList.remove('show');
+    }
+
+    blowHintTimeoutId = setTimeout(() => {
+        if (!hasBlown) {
+            const hint = ensureBlowHintElement();
+            if (hint) {
+                hint.style.display = 'block';
+                hint.classList.remove('show');
+                // restart animation
+                void hint.offsetWidth;
+                hint.classList.add('show');
+            }
+        }
+    }, 5000);
+}
+
+function hideBlowHint() {
+    if (blowHintTimeoutId) {
+        clearTimeout(blowHintTimeoutId);
+        blowHintTimeoutId = null;
+    }
+    if (blowHintEl) {
+        blowHintEl.style.display = 'none';
+        blowHintEl.classList.remove('show');
+    }
 }
 
 function detectBlow() {
@@ -29,6 +88,7 @@ function detectBlow() {
 
     if (volume > 0.35 && !hasBlown) {
         hasBlown = true;
+        hideBlowHint();
         console.log('Üfleme algılandı!');
         blowOutCandles();
         return;
@@ -41,6 +101,7 @@ function detectBlow() {
 
 async function initMicAndStart() {
     // Reset state if user retries
+    hideBlowHint();
     hasBlown = false;
     if (rafId) {
         cancelAnimationFrame(rafId);
@@ -99,6 +160,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function blowOutCandles() {
+    hideBlowHint();
     // Mikrofona erişimi durdur
     if (micStream) {
         micStream.getTracks().forEach(track => track.stop());

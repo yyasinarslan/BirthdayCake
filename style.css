@@ -23,7 +23,7 @@ body {
 }
 
 .cake::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: -60px;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.45), transparent 65%);
@@ -264,7 +264,7 @@ body {
 }
 
 .balloon::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -20px;
     left: 50%;
@@ -346,4 +346,40 @@ body {
     margin-top: 20px;
     font-size: 15px;
     color: rgba(255, 255, 255, 0.78);
+}
+
+/* Hint after cake is visible but no blow yet */
+.blow-hint {
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160%;
+  max-width: 520px;
+  font-family: 'Pacifico', cursive;
+  font-size: 22px;
+  color: #fff8dc;
+  text-align: center;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(2px);
+  z-index: 19;
+  opacity: 0;
+}
+
+.blow-hint.show {
+  animation: blowHintIn 0.6s ease-out forwards;
+}
+
+@keyframes blowHintIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 }
