@@ -8,13 +8,19 @@ const Config = {
         permissionHint: "İzin verdikten sonra sürpriz ekrana gelecek 😋", // Buton altındaki ipucu
         cakeMessage: "🎉 Sürpriz! 🎉<br />Canımın içi, iyi ki doğdun ❤️", // Pasta üflendikten sonra çıkan mesaj
         blowHint: "Hadi üfle mumları artık 🤩", // Üfleme gecikirse çıkan ipucu
-        modalTitle: "💌 Sana Bir Mektubum Var", // Mektup penceresi başlığı
+        modalTitle: "", // Başlık artık modalContent içinde (çerçeve düzeni için)
         modalContent: `
-            <p>Canım,</p>
-            <p>Bugün senin doğum günün! 🎂</p>
-            <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
-            <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorum! ❤️</p>
-            <p class="signature">Sevgilerinle,<br><strong>Yasin</strong></p>`, // Mektup içeriği (HTML destekler)
+            <div class="framed-content">
+                <div class="paper-title">💌 Sana Bir Mektubum Var</div>
+                <p>Canım,</p>
+                <p>Bugün senin doğum günün! 🎂</p>
+                <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
+                <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorum! ❤️</p>
+                <p class="signature">Sevgilerinle,<br><strong>Yasin</strong></p>
+            </div>
+            <div class="paper-image">
+                <img src="photos/myimage.jpg" alt="Güzel bir anımız" onerror="this.parentElement.style.display='none'" />
+            </div>`, // Mektup içeriği (HTML destekler)
         micRequesting: 'Mikrofon izni isteniyor... Lütfen "İzin ver" seç.', // İzin istenirken
         micDenied: 'Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.', // İzin reddedilirse
         micNotFound: 'Mikrofon bulunamadı. Cihazında mikrofon olduğundan emin ol.', // Mikrofon yoksa
