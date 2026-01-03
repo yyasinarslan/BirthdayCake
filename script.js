@@ -225,6 +225,7 @@ async function initMicAndStart() {
 // Start after DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
     applyConfig();
+    createStars();
 
     const btn = qs('#permission-btn');
     if (btn) {
@@ -324,4 +325,28 @@ function startBalloonLoop() {
             }
         }, Config.timeouts.balloonRemove);
     }, Config.timeouts.balloonLoop);
+}
+
+function createStars() {
+    const container = document.getElementById('star-container');
+    if (!container) return;
+
+    for (let i = 0; i < Config.stars.count; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const size = Config.stars.minSize + Math.random() * (Config.stars.maxSize - Config.stars.minSize);
+        const duration = Config.stars.minDuration + Math.random() * (Config.stars.maxDuration - Config.stars.minDuration);
+        const delay = Math.random() * 5;
+
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.setProperty('--twinkle-duration', `${duration}s`);
+        star.style.animationDelay = `${delay}s`;
+
+        container.appendChild(star);
+    }
 }

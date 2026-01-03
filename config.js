@@ -45,6 +45,14 @@ const Config = {
         minDuration: 2, // En hızlı balonun yukarı çıkış süresi
         randomDuration: 3 // Rastgele eklenecek ek süre (min + random)
     },
+    // Yıldız efekti ayarları
+    stars: {
+        count: 60, // Ekranda görünecek yıldız sayısı
+        minSize: 1, // Minimum boyut (px)
+        maxSize: 3, // Maksimum boyut (px)
+        minDuration: 2, // Minimum yanıp sönme süresi (sn)
+        maxDuration: 5 // Maksimum yanıp sönme süresi (sn)
+    },
     // CSS değişkenlerini buradan dinamik olarak güncellemek için
     cssVars: {
         '--balloon-float-duration': '6s', // CSS'deki balon uçuş süresi
