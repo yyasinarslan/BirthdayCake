@@ -327,9 +327,6 @@ function blowOutCandles() {
         spread: Config.confetti.spread,
         origin: { y: Config.confetti.originY }
     });
-
-    const music = document.getElementById('bg-music');
-    if (music) music.volume = 1;
 }
 
 function startBalloonLoop() {
