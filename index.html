@@ -9,7 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="cake">
+<div id="permission-screen" class="permission-screen">
+    <div class="permission-card">
+        <div class="permission-title">🎤 Mikrofon İzni Gerekli</div>
+        <div id="permission-status" class="permission-status">
+            Mumları üfleyebilmek için lütfen mikrofon izni ver.
+        </div>
+        <button id="permission-btn" class="permission-btn">Mikrofonu Aç</button>
+        <div class="permission-hint">İzin verdikten sonra pasta ekrana gelecek 🎂</div>
+    </div>
+</div>
+
+<div class="cake" id="cake" style="display:none;">
     <div class="plate"></div>
     <div class="layer layer-bottom"></div>
     <div class="layer layer-middle"></div>
@@ -19,7 +30,7 @@
     <div class="drip drip2"></div>
     <div class="drip drip3"></div>
     <div class="candle">
-      <div class="flame"></div>
+        <div class="flame"></div>
     </div>
     <div class="message" id="message">
         🎉 Sürpriz! 🎉<br />
