@@ -18,8 +18,10 @@ const Config = {
                 <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorum! ❤️</p>
                 <p class="signature">Sevgilerinle,<br><strong>Yasin</strong></p>
             </div>
-            <div class="paper-image">
-                <img src="photos/myimage.jpg" alt="Güzel bir anımız" onerror="this.parentElement.style.display='none'" />
+            <div class="slideshow-container">
+                <img src="photos/our-image-1.png" class="slide active" alt="Anı 1" onerror="this.style.display='none'" />
+                <img src="photos/our-image-2.png" class="slide" alt="Anı 2" onerror="this.style.display='none'" />
+                <img src="photos/our-image-3.png" class="slide" alt="Anı 3" onerror="this.style.display='none'" />
             </div>`, // Mektup içeriği (HTML destekler)
         micRequesting: 'Mikrofon izni isteniyor... Lütfen "İzin ver" seç.', // İzin istenirken
         micDenied: 'Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.', // İzin reddedilirse

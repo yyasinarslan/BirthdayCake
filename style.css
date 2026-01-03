@@ -702,12 +702,17 @@ body {
   margin: 0 0 20px;
 }
 
-.paper-image {
+.slideshow-container {
   margin: 24px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
 }
 
-.paper-image img {
+.slideshow-container img {
+  display: none;
   max-width: 100%;
   max-height: 250px;
   height: auto;
@@ -715,6 +720,16 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: 8px solid #fff;
   transform: rotate(-2deg);
+}
+
+.slideshow-container img.active {
+  display: inline-block;
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
 }
 
 .paper-body .signature {

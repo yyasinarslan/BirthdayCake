@@ -7,6 +7,7 @@ let blowHintTimeoutId = null;
 let blowHintEl = null;
 
 let showLetterTimeoutId = null;
+let slideshowInterval = null;
 
 function qs(sel) {
     return document.querySelector(sel);
@@ -119,10 +120,12 @@ function openLetter() {
     if (modal) {
         modal.style.display = 'flex';
         modal.setAttribute('aria-hidden', 'false');
+        startSlideshow();
     }
 }
 
 function closeLetter() {
+    stopSlideshow();
     const modal = qs('#letter-modal');
     if (modal) {
         modal.style.display = 'none';
@@ -347,5 +350,26 @@ function createStars() {
         star.style.animationDelay = `${delay}s`;
 
         container.appendChild(star);
+    }
+}
+
+function startSlideshow() {
+    const slides = document.querySelectorAll('.slideshow-container .slide');
+    if (slides.length === 0) return;
+
+    let slideIndex = 0;
+    stopSlideshow();
+
+    slideshowInterval = setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+    }, 3000); // 3 saniyede bir değişir
+}
+
+function stopSlideshow() {
+    if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
     }
 }
