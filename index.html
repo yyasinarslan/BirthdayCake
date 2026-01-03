@@ -39,6 +39,28 @@
 </div>
 
 <div id="balloon-container"></div>
+
+<!-- Letter (appears after blowing the candle) -->
+<div id="letter" class="letter" style="display:none;" role="button" aria-label="Mektubu aç">
+    <div class="letter-icon">
+        <div class="envelope-fold"></div>
+        <div class="seal"></div>
+    </div>
+    <div class="letter-text">Okumak için tıkla</div>
+</div>
+
+<!-- Letter modal / paper -->
+<div id="letter-modal" class="letter-modal" style="display:none;" aria-hidden="true">
+    <div class="paper" role="dialog" aria-modal="true" aria-label="Mektup">
+        <button id="letter-close" class="paper-close" aria-label="Kapat">✕</button>
+        <div class="paper-title">💌 Sana Bir Mektubum Var</div>
+        <div id="paper-body" class="paper-body">
+            <!-- Buraya uzun metnini yapıştıracaksın -->
+            Merhaba!\n\nBu alan, senin yazacağın uzun mektup metni için yer tutucu.\n\nMetni daha sonra script.js içindeki LETTER_TEXT değişkeninden değiştirebilirsin.
+        </div>
+    </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>

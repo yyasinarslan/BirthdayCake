@@ -6,6 +6,11 @@ let rafId = null;
 let blowHintTimeoutId = null;
 let blowHintEl = null;
 
+// Letter content (edit this text later)
+const LETTER_TEXT = `Merhaba!\n\nBuraya uzun mektubunu yapıştıracaksın.\n\nİstersen satır satır yazabilirsin; \"\\n\" satır atlatır.`;
+
+let showLetterTimeoutId = null;
+
 function qs(sel) {
     return document.querySelector(sel);
 }
@@ -19,6 +24,7 @@ function showCakeAndHidePermission() {
 
     // If user doesn't blow for 5 seconds after cake appears, show a gentle hint
     scheduleBlowHint();
+    resetLetterUI();
 }
 
 function setPermissionStatus(text) {
@@ -80,6 +86,60 @@ function hideBlowHint() {
     }
 }
 
+function showLetterWithAnimation() {
+    const letter = qs('#letter');
+    if (!letter) return;
+
+    letter.style.display = 'flex';
+    letter.classList.remove('show');
+    void letter.offsetWidth; // restart animation
+    letter.classList.add('show');
+}
+
+function openLetter() {
+    const modal = qs('#letter-modal');
+    const body = qs('#paper-body');
+    if (body) body.textContent = LETTER_TEXT;
+
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+    }
+}
+
+function closeLetter() {
+    const modal = qs('#letter-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+    }
+}
+
+function scheduleLetterAfterBlow() {
+    if (showLetterTimeoutId) {
+        clearTimeout(showLetterTimeoutId);
+        showLetterTimeoutId = null;
+    }
+
+    showLetterTimeoutId = setTimeout(() => {
+        showLetterWithAnimation();
+    }, 5000);
+}
+
+function resetLetterUI() {
+    if (showLetterTimeoutId) {
+        clearTimeout(showLetterTimeoutId);
+        showLetterTimeoutId = null;
+    }
+    closeLetter();
+
+    const letter = qs('#letter');
+    if (letter) {
+        letter.style.display = 'none';
+        letter.classList.remove('show');
+    }
+}
+
 function detectBlow() {
     if (!analyser || !data) return;
 
@@ -102,6 +162,7 @@ function detectBlow() {
 async function initMicAndStart() {
     // Reset state if user retries
     hideBlowHint();
+    resetLetterUI();
     hasBlown = false;
     if (rafId) {
         cancelAnimationFrame(rafId);
@@ -154,6 +215,29 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Letter interactions
+    const letter = qs('#letter');
+    if (letter) {
+        letter.addEventListener('click', openLetter);
+    }
+
+    const closeBtn = qs('#letter-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLetter);
+    }
+
+    const modal = qs('#letter-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            // click outside the paper closes
+            if (e.target === modal) closeLetter();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLetter();
+    });
+
     // Try once automatically (works on many browsers). If the browser requires a user gesture,
     // the overlay remains and the user can click the button.
     initMicAndStart();
@@ -180,6 +264,7 @@ function blowOutCandles() {
     }
 
     startBalloonLoop();
+    scheduleLetterAfterBlow();
 
     const message = document.getElementById('message');
     if (message) {
