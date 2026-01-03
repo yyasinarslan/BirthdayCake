@@ -77,9 +77,9 @@ async function initMicAndStart() {
         if (err && err.name === 'NotAllowedError') {
             setPermissionStatus('Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.');
         } else if (err && err.name === 'NotFoundError') {
-            setPermissionStatus('Mikrofon bulunamadı. Bilgisayarında mikrofon olduğundan emin ol.');
+            setPermissionStatus('Mikrofon bulunamadı. Cihazında mikrofon olduğundan emin ol.');
         } else {
-            setPermissionStatus('Mikrofon açılamadı. Lütfen tekrar dene.');
+            setPermissionStatus('Mikrofon başlatılamadı. Lütfen tekrar dene.');
         }
     }
 }
