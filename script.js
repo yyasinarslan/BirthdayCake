@@ -115,7 +115,34 @@ function showLetterWithAnimation() {
 function openLetter() {
     const modal = qs('#letter-modal');
     const body = qs('#paper-body');
-    if (body) body.innerHTML = Config.texts.modalContent;
+    if (body) {
+        body.innerHTML = Config.texts.modalContent;
+
+        // Resimleri dinamik olarak ekle
+        const container = body.querySelector('.slideshow-container');
+        if (container) {
+            const photos = Config.slideshow && Config.slideshow.photos;
+            if (photos && photos.length > 0) {
+                let failCount = 0;
+                photos.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = index === 0 ? 'slide active' : 'slide';
+                    img.alt = `Anı ${index + 1}`;
+                    img.onerror = function() {
+                        this.style.display = 'none';
+                        failCount++;
+                        if (failCount === photos.length) {
+                            container.style.display = 'none';
+                        }
+                    };
+                    container.appendChild(img);
+                });
+            } else {
+                container.style.display = 'none';
+            }
+        }
+    }
 
     if (modal) {
         modal.style.display = 'flex';
@@ -360,11 +387,13 @@ function startSlideshow() {
     let slideIndex = 0;
     stopSlideshow();
 
+    const interval = (Config.slideshow && Config.slideshow.interval) ? Config.slideshow.interval : 3000;
+
     slideshowInterval = setInterval(() => {
         slides[slideIndex].classList.remove('active');
         slideIndex = (slideIndex + 1) % slides.length;
         slides[slideIndex].classList.add('active');
-    }, 3000); // 3 saniyede bir değişir
+    }, interval);
 }
 
 function stopSlideshow() {

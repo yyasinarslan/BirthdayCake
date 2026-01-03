@@ -19,9 +19,7 @@ const Config = {
                 <p class="signature">Sevgilerinle,<br><strong>Yasin</strong></p>
             </div>
             <div class="slideshow-container">
-                <img src="photos/our-image-1.png" class="slide active" alt="Anı 1" onerror="this.style.display='none'" />
-                <img src="photos/our-image-2.png" class="slide" alt="Anı 2" onerror="this.style.display='none'" />
-                <img src="photos/our-image-3.png" class="slide" alt="Anı 3" onerror="this.style.display='none'" />
+                <!-- Resimler script.js tarafından Config.slideshow.photos dizisinden doldurulacak -->
             </div>`, // Mektup içeriği (HTML destekler)
         micRequesting: 'Mikrofon izni isteniyor... Lütfen "İzin ver" seç.', // İzin istenirken
         micDenied: 'Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.', // İzin reddedilirse
@@ -51,6 +49,15 @@ const Config = {
     balloons: {
         minDuration: 2, // En hızlı balonun yukarı çıkış süresi
         randomDuration: 3 // Rastgele eklenecek ek süre (min + random)
+    },
+    // Slayt gösterisi ayarları
+    slideshow: {
+        interval: 3000, // Geçiş süresi (ms)
+        photos: [
+            "photos/our-image-1.png",
+            "photos/our-image-2.png",
+            "photos/our-image-3.png"
+        ]
     },
     // Yıldız efekti ayarları
     stars: {
