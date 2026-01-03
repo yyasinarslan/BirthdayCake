@@ -603,55 +603,83 @@ body {
   width: min(820px, 92vw);
   max-height: 82vh;
   overflow: auto;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.90));
-  border-radius: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.65);
-  padding: 26px 24px 22px;
+  background-color: #f4ecd8;
+  background-image: none;
+  border-radius: 4px;
+  box-shadow: 
+      0 24px 50px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 50px 40px;
   position: relative;
+  border: none;
+}
+
+/* Decorative inner border */
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 2px solid #8b5a2b;
+  border-radius: 0;
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 .paper-title {
   font-family: 'Pacifico', cursive;
-  font-size: 30px;
-  color: #2b1640;
+  font-size: 36px;
+  color: #8b5a2b;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  text-shadow: none;
 }
 
 .paper-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.7;
-  color: #2a2a2a;
+  font-family: 'Pacifico', cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #2c1810;
+  text-align: left;
 }
 
 .paper-body p {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
 }
 
 .paper-body .signature {
   margin-top: 32px;
   text-align: right;
-  font-style: italic;
+  font-family: 'Pacifico', cursive;
+  font-style: normal;
+  font-weight: normal;
+  color: #8b5a2b;
+  font-size: 30px;
 }
 
 .paper-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   border: 0;
-  background: rgba(43, 22, 64, 0.10);
-  color: #2b1640;
-  font-size: 18px;
-  font-weight: 700;
+  background: transparent;
+  color: #8b5a2b;
+  border: 2px solid #8b5a2b;
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s, background 0.2s;
+  z-index: 10;
 }
 
 .paper-close:hover {
-  background: rgba(43, 22, 64, 0.16);
+  background: #8b5a2b;
+  color: #f4ecd8;
+  transform: rotate(90deg);
 }
