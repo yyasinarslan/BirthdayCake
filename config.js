@@ -12,19 +12,15 @@ const Config = {
         modalContent: `
             <div class="framed-content">
                 <div class="paper-title">💌 Biricik sevgilimee 💌</div>
-                <div class="paper-layout">
-                    <div class="paper-text">
-                        <p>Bugüüün canım aşkımın doğum günüüü 🥳,</p>
-                        <p>Doğum günün kutlu olsun hayatımmm 🎂🎊</p>
-                        <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
-                        <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorummm 🤍</p>
-                        <p class="signature">Sana çok aşık olan sevgilinnn,<br><strong>Yasin</strong></p>
-                    </div>
-                    <div class="paper-media">
-                        <div class="slideshow-container">
-                            <!-- Resimler script.js tarafından Config.slideshow.photos dizisinden doldurulacak -->
-                        </div>
-                    </div>
+                <div class="slideshow-container">
+                    <!-- Resimler script.js tarafından Config.slideshow.photos dizisinden doldurulacak -->
+                </div>
+                <div class="paper-text">
+                    <p>Bugüüün canım aşkımın doğum günüüü 🥳,</p>
+                    <p>Doğum günün kutlu olsun hayatımmm 🎂🎊</p>
+                    <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
+                    <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorummm 🤍</p>
+                    <p class="signature">Sana çok aşık olan sevgilinnn,<br><strong>Yasin</strong></p>
                 </div>
             </div>`, // Mektup içeriği (HTML destekler)
         micRequesting: 'Mikrofon izni isteniyor... Lütfen "İzin ver" seç.', // İzin istenirken
