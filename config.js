@@ -1,22 +1,22 @@
 const Config = {
     // Kullanıcı arayüzünde görünen metinler
     texts: {
-        title: "Happy Birthday 🎂", // Tarayıcı sekmesindeki başlık
+        title: "Happy Birthday", // Tarayıcı sekmesindeki başlık
         permissionTitle: "🎤 Mikrofon İzni Gerekli", // İzin ekranı başlığı
         permissionStatus: "Sürpriz için lütfen mikrofon izni ver.", // İzin durumu mesajı
         permissionBtn: "Mikrofonu Aç", // Buton metni
         permissionHint: "İzin verdikten sonra sürpriz ekrana gelecek 😋", // Buton altındaki ipucu
-        cakeMessage: "🎉 Sürpriz! 🎉<br />Canımın içi, iyi ki doğdun ❤️", // Pasta üflendikten sonra çıkan mesaj
-        blowHint: "Hadi üfle mumları artık 🤩", // Üfleme gecikirse çıkan ipucu
+        cakeMessage: "🎉 Sürpriiiiiiz! 🎉<br />Canımın içiii, iyi ki doğduunnnn 🥳🥳🎉🎉💕💕", // Pasta üflendikten sonra çıkan mesaj
+        blowHint: "Hadiii üfle mumları artık 😋", // Üfleme gecikirse çıkan ipucu
         modalTitle: "", // Başlık artık modalContent içinde (çerçeve düzeni için)
         modalContent: `
             <div class="framed-content">
-                <div class="paper-title">💌 Sana Bir Mektubum Var</div>
-                <p>Canım,</p>
-                <p>Bugün senin doğum günün! 🎂</p>
+                <div class="paper-title">💌 Biricik sevgilimee 💌</div>
+                <p>Bugüüün canım aşkımın doğum günüüü 🥳,</p>
+                <p>Doğum günün kutlu olsun hayatımmm 🎂🎊</p>
                 <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
-                <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorum! ❤️</p>
-                <p class="signature">Sevgilerinle,<br><strong>Yasin</strong></p>
+                <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorummm 🤍</p>
+                <p class="signature">Sana çok aşık olan sevgilinnn,<br><strong>Yasin</strong></p>
             </div>
             <div class="slideshow-container">
                 <!-- Resimler script.js tarafından Config.slideshow.photos dizisinden doldurulacak -->
