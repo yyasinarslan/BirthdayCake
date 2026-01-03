@@ -767,3 +767,32 @@ body {
   color: #f4ecd8;
   transform: rotate(90deg);
 }
+
+/* Two-column layout for the letter content */
+.paper-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  text-align: left;
+}
+
+.paper-text {
+  flex: 1;
+}
+
+.paper-media {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive: Stack on smaller screens */
+@media (max-width: 768px) {
+  .paper-layout {
+    flex-direction: column;
+  }
+  .paper-media {
+    width: 100%;
+  }
+}
