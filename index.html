@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday 🎂</title>
+    <title></title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -11,12 +11,10 @@
 <body>
 <div id="permission-screen" class="permission-screen">
     <div class="permission-card">
-        <div class="permission-title">🎤 Mikrofon İzni Gerekli</div>
-        <div id="permission-status" class="permission-status">
-            Sürpriz için lütfen mikrofon izni ver.
-        </div>
-        <button id="permission-btn" class="permission-btn">Mikrofonu Aç</button>
-        <div class="permission-hint">İzin verdikten sonra sürpriz ekrana gelecek 😋</div>
+        <div class="permission-title"></div>
+        <div id="permission-status" class="permission-status"></div>
+        <button id="permission-btn" class="permission-btn"></button>
+        <div class="permission-hint"></div>
     </div>
 </div>
 
@@ -32,10 +30,7 @@
     <div class="candle">
         <div class="flame"></div>
     </div>
-    <div class="message" id="message">
-        🎉 Sürpriz! 🎉<br />
-        Canımın içi, iyi ki doğdun ❤️
-    </div>
+    <div class="message" id="message"></div>
 </div>
 
 <div id="balloon-container"></div>
@@ -46,18 +41,15 @@
         <div class="envelope-fold"></div>
         <div class="seal"></div>
     </div>
-    <div class="letter-text">Okumak için tıkla</div>
+    <div class="letter-text"></div>
 </div>
 
 <!-- Letter modal / paper -->
 <div id="letter-modal" class="letter-modal" style="display:none;" aria-hidden="true">
     <div class="paper" role="dialog" aria-modal="true" aria-label="Mektup">
         <button id="letter-close" class="paper-close" aria-label="Kapat">✕</button>
-        <div class="paper-title">💌 Sana Bir Mektubum Var</div>
-        <div id="paper-body" class="paper-body">
-            <!-- Buraya uzun metnini yapıştıracaksın -->
-            Merhaba!\n\nBu alan, senin yazacağın uzun mektup metni için yer tutucu.\n\nMetni daha sonra script.js içindeki LETTER_TEXT değişkeninden değiştirebilirsin.
-        </div>
+        <div class="paper-title"></div>
+        <div id="paper-body" class="paper-body"></div>
     </div>
 </div>
 

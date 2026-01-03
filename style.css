@@ -1,3 +1,8 @@
+:root {
+    --balloon-float-duration: 6s;
+    --message-pop-duration: 1s;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -219,7 +224,7 @@ body {
     text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.8);
     padding: 20px;
     border-radius: 15px;
-    animation: popIn 1s ease-out;
+    animation: popIn var(--message-pop-duration) ease-out;
     z-index: 20;
     white-space: normal;
     word-break: break-word;
@@ -255,7 +260,7 @@ body {
     height: 35px;
     background-color: rgba(255, 182, 193, 0.75);
     border-radius: 50% 50% 50% 50%;
-    animation: floatUp 6s linear forwards;
+    animation: floatUp var(--balloon-float-duration) linear forwards;
     opacity: 0.9;
     box-shadow:
         0 10px 24px rgba(0, 0, 0, 0.35),
@@ -595,7 +600,16 @@ body {
   font-size: 18px;
   line-height: 1.7;
   color: #2a2a2a;
-  white-space: pre-wrap; /* preserves \n */
+}
+
+.paper-body p {
+  margin: 0 0 16px;
+}
+
+.paper-body .signature {
+  margin-top: 32px;
+  text-align: right;
+  font-style: italic;
 }
 
 .paper-close {
