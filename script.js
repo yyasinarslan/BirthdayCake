@@ -127,7 +127,7 @@ function openLetter() {
                 photos.forEach((src, index) => {
                     const img = document.createElement('img');
                     img.src = src;
-                    img.className = index === 0 ? 'slide active' : 'slide';
+                    img.className = index === 0 ? 'slide active first-entry' : 'slide';
                     img.alt = `Anı ${index + 1}`;
                     img.onerror = function() {
                         this.style.display = 'none';
@@ -388,6 +388,7 @@ function startSlideshow() {
 
     slideshowInterval = setInterval(() => {
         slides[slideIndex].classList.remove('active');
+        slides[slideIndex].classList.remove('first-entry');
         slideIndex = (slideIndex + 1) % slides.length;
         slides[slideIndex].classList.add('active');
     }, interval);

@@ -730,14 +730,30 @@ body {
   animation: fadeEffect 1s;
 }
 
+.slideshow-container img.active.first-entry {
+  transform-origin: top center;
+  animation: swingIn 1.2s ease-out forwards;
+}
+
 @keyframes fadeEffect {
   from { opacity: 0.4; }
   to { opacity: 1; }
 }
 
+@keyframes swingIn {
+  0% { opacity: 0; transform: rotate(10deg) scale(0.9); }
+  20% { opacity: 1; transform: rotate(-6deg); }
+  40% { transform: rotate(4deg); }
+  60% { transform: rotate(-4deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(-2deg); }
+}
+
 .paper-body .signature {
   margin-top: 32px;
   text-align: right;
+  width: fit-content;
+  margin-left: auto;
   font-family: 'Pacifico', cursive;
   font-style: normal;
   font-weight: normal;
@@ -782,6 +798,18 @@ body {
 .paper-text p:nth-child(3) { animation-delay: 2.1s; }
 .paper-text p:nth-child(4) { animation-delay: 3.0s; }
 .paper-text p:nth-child(5) { animation-delay: 3.9s; }
+
+/* Signature specific animation (handwriting effect) */
+.paper-text .signature {
+  opacity: 0;
+  animation: writeSignature 2s linear forwards;
+  animation-delay: 4.8s;
+}
+
+@keyframes writeSignature {
+  from { opacity: 1; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
 
 @keyframes lineAppear {
   from { opacity: 0; transform: translateY(15px); }
