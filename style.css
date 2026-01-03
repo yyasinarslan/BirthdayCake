@@ -198,27 +198,19 @@ body {
                 0 0 60px rgba(255,165,0, 0.2),
                 0 0 80px rgba(255,165,0, 0.2);
     }
-    25% {
-        transform: skewX(-5deg);
-    }
-    50% {
-        transform: skewX(10deg);
-    }
-    75% {
-        transform: skewX(-10deg);
-    }
-    100% {
-        transform: skewX(5deg);
-    }
+    25% { transform: skewX(-5deg); }
+    50% { transform: skewX(10deg); }
+    75% { transform: skewX(-10deg); }
+    100% { transform: skewX(5deg); }
 }
 
 .message {
     display: none;
     position: absolute;
-    top: 110%; /* pastanın altına */
+    top: 110%;
     left: 50%;
     transform: translateX(-50%);
-    width: 150%;             /* veya 300px gibi sabit bir genişlik */
+    width: 150%;
     max-width: 400px;
     font-family: 'Pacifico', cursive;
     font-size: 28px;
@@ -229,10 +221,9 @@ body {
     border-radius: 15px;
     animation: popIn 1s ease-out;
     z-index: 20;
-    white-space: normal;     /* önemli! metni sar, taşmasın */
-    word-break: break-word;  /* uzun kelimelerde taşmayı engelle */
+    white-space: normal;
+    word-break: break-word;
 }
-
 
 @keyframes popIn {
     0% {
@@ -262,10 +253,14 @@ body {
     bottom: -100px;
     width: 25px;
     height: 35px;
-    background-color: rgba(255, 182, 193, 0.5); /* Yumuşak pembe */
+    background-color: rgba(255, 182, 193, 0.75);
     border-radius: 50% 50% 50% 50%;
     animation: floatUp 6s linear forwards;
-    opacity: 0.6;
+    opacity: 0.9;
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.35),
+        inset -4px -6px 10px rgba(0, 0, 0, 0.12),
+        inset 4px 6px 10px rgba(255, 255, 255, 0.12);
 }
 
 .balloon::after {
@@ -275,14 +270,17 @@ body {
     left: 50%;
     width: 1px;
     height: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.35);
     transform: translateX(-50%);
 }
 
 @keyframes floatUp {
     0% {
         transform: translateY(0) scale(1);
-        opacity: 0.6;
+        opacity: 0.9;
+    }
+    70% {
+        opacity: 0.9;
     }
     100% {
         transform: translateY(-800px) scale(1.1);

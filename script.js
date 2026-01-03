@@ -148,7 +148,7 @@ function startBalloonLoop() {
         const r = 200 + Math.random() * 55;
         const g = 100 + Math.random() * 155;
         const b = 150 + Math.random() * 105;
-        balloon.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+        balloon.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.65)`;
         balloon.style.animationDuration = `${2 + Math.random() * 3}s`;
 
         container.appendChild(balloon);
