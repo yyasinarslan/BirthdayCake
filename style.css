@@ -458,6 +458,49 @@ body {
   transform: translate(calc(-50% + 200px), calc(-50% + 122px)) rotate(8deg) scale(1.03);
 }
 
+/* Tooltip for the letter */
+.letter::before {
+  content: "Mektubu Oku";
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg) scale(0.5);
+  transform-origin: bottom center;
+  background: #3e2723;
+  color: #fff8dc;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-family: 'Pacifico', cursive;
+  font-size: 16px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 20;
+}
+
+.letter::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg) scale(0);
+  transform-origin: top center;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #3e2723;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 20;
+}
+
+.letter:hover::before,
+.letter:hover::after {
+  opacity: 0.85;
+  transform: translateX(-50%) rotate(0deg) scale(1);
+}
+
 /* Envelope drawing */
 .letter-icon {
   /* hide the emoji character in HTML (we draw with CSS) */
@@ -470,11 +513,18 @@ body {
 
   /* outer paper (brighter + clearer edge) */
   background: #ffffff;
-  border: 2px solid #e0e0e0;
+  border: none;
 
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.2);
+
+  animation: envelopePulse 2s infinite ease-in-out;
+}
+
+@keyframes envelopePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
 
 /* inner pink paper */
@@ -506,6 +556,10 @@ body {
 
   transform-origin: top;
   transition: transform 0.4s ease;
+}
+
+.letter:hover .letter-icon {
+  animation-play-state: paused;
 }
 
 .letter:hover .letter-icon::after {
@@ -573,22 +627,6 @@ body {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.92);
   transform: translateY(-0.5px);
-}
-
-.letter-text {
-  font-family: 'Pacifico', cursive;
-  font-size: 15px;
-  color: #ffeebb;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-  white-space: nowrap;
-  opacity: 0.8;
-  transform: translateY(-2px);
-}
-
-/* a tiny bit more visible only on hover */
-.letter:hover .letter-text {
-  opacity: 1;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
 /* Mobile positioning */

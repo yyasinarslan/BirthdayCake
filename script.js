@@ -22,7 +22,6 @@ function applyConfig() {
     setTxt('#permission-btn', Config.texts.permissionBtn);
     setTxt('.permission-hint', Config.texts.permissionHint);
     setHtml('#message', Config.texts.cakeMessage);
-    setTxt('.letter-text', Config.texts.letterBtn);
     setTxt('.paper-title', Config.texts.modalTitle);
 
     const root = document.documentElement;

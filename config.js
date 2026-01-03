@@ -8,7 +8,6 @@ const Config = {
         permissionHint: "İzin verdikten sonra sürpriz ekrana gelecek 😋", // Buton altındaki ipucu
         cakeMessage: "🎉 Sürpriz! 🎉<br />Canımın içi, iyi ki doğdun ❤️", // Pasta üflendikten sonra çıkan mesaj
         blowHint: "Hadi üfle mumları artık 🤩", // Üfleme gecikirse çıkan ipucu
-        letterBtn: "Okumak için tıkla", // Mektup zarfının altındaki yazı
         modalTitle: "💌 Sana Bir Mektubum Var", // Mektup penceresi başlığı
         modalContent: `
             <p>Canım,</p>
