@@ -304,12 +304,12 @@ function blowOutCandles() {
         rafId = null;
     }
 
-    const flame = document.querySelector('.flame');
-    if (flame) {
+    const flames = document.querySelectorAll('.flame');
+    flames.forEach(flame => {
         flame.style.transition = `opacity ${Config.timeouts.flameFade / 1000}s ease-out`;
         flame.style.opacity = 0;
         setTimeout(() => (flame.style.display = 'none'), Config.timeouts.flameFade);
-    }
+    });
 
     startBalloonLoop();
     scheduleLetterAfterBlow();

@@ -184,9 +184,29 @@ body {
     height: 50px;
     border-radius: 8px / 4px;
     top: -20px;
-    left: 50%;
     margin-left: -8px;
     z-index: 10;
+}
+
+.candle-1 {
+    left: 22%;
+    top: -24px;
+    height: 45px;
+    transform: rotate(-8deg);
+}
+
+.candle-2 {
+    left: 50%;
+    top: -28px;
+    height: 52px;
+    z-index: 11;
+}
+
+.candle-3 {
+    left: 78%;
+    top: -22px;
+    height: 48px;
+    transform: rotate(6deg);
 }
 
 .candle::before {
@@ -218,6 +238,10 @@ body {
     transform-origin: 50% 90%;
     animation: flicker 1s ease-in-out alternate infinite;
 }
+
+.candle-1 .flame { animation-delay: 0.2s; }
+.candle-2 .flame { animation-delay: 0.5s; }
+.candle-3 .flame { animation-delay: 0s; }
 
 @keyframes flicker {
     0% {
