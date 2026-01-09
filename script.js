@@ -269,11 +269,15 @@ function checkDateAccess() {
     const parts = Config.date.split('-');
     // Javascript'te aylar 0-11 arasıdır, o yüzden ay kısmından 1 çıkarıyoruz
     const targetDate = new Date(parts[0], parts[1] - 1, parts[2]);
-    const now = new Date();
+    
+    if (Config.time) {
+        const timeParts = Config.time.split(':');
+        targetDate.setHours(parseInt(timeParts[0], 10), parseInt(timeParts[1], 10), 0, 0);
+    } else {
+        targetDate.setHours(0, 0, 0, 0);
+    }
 
-    // Sadece gün kontrolü yapmak için saatleri sıfırlıyoruz
-    targetDate.setHours(0, 0, 0, 0);
-    now.setHours(0, 0, 0, 0);
+    const now = new Date();
 
     // Eğer şu anki tarih, hedef tarihten küçükse (daha gelmediyse)
     if (now < targetDate) {

@@ -1,6 +1,8 @@
 const Config = {
     // Sürprizin açılacağı tarih (Yıl-Ay-Gün formatında: YYYY-MM-DD)
     date: "2026-01-11", 
+    // Sürprizin açılacağı saat (Saat-Dakika formatında: HH:MM)
+    time: "20:00",
     // Kullanıcı arayüzünde görünen metinler
     texts: {
         title: "Happy Birthday", // Tarayıcı sekmesindeki başlık
