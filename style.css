@@ -258,6 +258,31 @@ body {
     100% { transform: skewX(5deg); }
 }
 
+.smoke {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    width: 4px;
+    height: 10px;
+    background: rgba(220, 220, 220, 0.5);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    filter: blur(3px);
+    z-index: 15;
+    pointer-events: none;
+}
+
+.smoke.puff {
+    animation: smokeRise 2s ease-out forwards;
+}
+
+@keyframes smokeRise {
+    0% { opacity: 0; transform: translateX(-50%) translateY(0) scale(0.5); }
+    20% { opacity: 0.8; transform: translateX(-50%) translateY(-15px) scale(1.5); }
+    100% { opacity: 0; transform: translateX(-60%) translateY(-70px) scale(4); }
+}
+
 .message {
     display: none;
     position: absolute;

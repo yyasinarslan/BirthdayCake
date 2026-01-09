@@ -405,6 +405,11 @@ function blowOutCandles() {
         setTimeout(() => (flame.style.display = 'none'), Config.timeouts.flameFade);
     });
 
+    const smokes = document.querySelectorAll('.smoke');
+    smokes.forEach(smoke => {
+        smoke.classList.add('puff');
+    });
+
     startBalloonLoop();
     scheduleLetterAfterBlow();
 
@@ -513,6 +518,11 @@ function resetExperience() {
         flame.style.transition = 'none';
         flame.style.opacity = 1;
         flame.style.display = 'block';
+    });
+
+    const smokes = document.querySelectorAll('.smoke');
+    smokes.forEach(smoke => {
+        smoke.classList.remove('puff');
     });
 
     initMicAndStart();
