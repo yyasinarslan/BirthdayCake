@@ -11,15 +11,16 @@ const Config = {
         modalTitle: "", // Başlık artık modalContent içinde (çerçeve düzeni için)
         modalContent: `
             <div class="framed-content">
-                <div class="paper-title">💌 Biricik sevgilimee 💌</div>
+                <div class="paper-title">💌 Biricik sevgilime bir mektup 💌</div>
                 <div class="slideshow-container">
                     <!-- Resimler script.js tarafından Config.slideshow.photos dizisinden doldurulacak -->
                 </div>
                 <div class="paper-text">
                     <p>Bugüüün canım aşkımın doğum günüüü 🥳,</p>
                     <p>Doğum günün kutlu olsun hayatımmm 🎂🎊</p>
-                    <p>Hayatıma kattığın tüm güzellikler için teşekkür ederim. Seninle geçen her gün benim için bir hediye.</p>
-                    <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın. Seni çok seviyorummm 🤍</p>
+                    <pİyi ki varsın iyi ki hayatımdasınnn seninle geçen her gün benim için bir hediyeee</p>
+                    <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın (hayatından da benn 😋)</p>
+                    <p>Seni çooook seviyorummm 🤍</p>
                     <p class="signature">Sana çok aşık olan sevgilinnn,<br><strong>Yasin</strong></p>
                 </div>
             </div>`, // Mektup içeriği (HTML destekler)
