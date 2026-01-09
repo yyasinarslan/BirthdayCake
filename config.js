@@ -66,9 +66,9 @@ const Config = {
     slideshow: {
         interval: 3000, // Geçiş süresi (ms)
         photos: [
-            "photos/our-image-1.png",
-            "photos/our-image-2.png",
-            "photos/our-image-3.png"
+            "photos/our-image-1.jpeg",
+            "photos/our-image-2.jpeg",
+            "photos/our-image-3.jpeg"
         ]
     },
     // Yıldız efekti ayarları
