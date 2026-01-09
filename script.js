@@ -432,6 +432,8 @@ function blowOutCandles() {
         smoke.classList.add('puff');
     });
 
+    document.body.classList.add('lights-on');
+
     startBalloonLoop();
     scheduleLetterAfterBlow();
 
@@ -546,6 +548,8 @@ function resetExperience() {
     smokes.forEach(smoke => {
         smoke.classList.remove('puff');
     });
+
+    document.body.classList.remove('lights-on');
 
     initMicAndStart();
 }
