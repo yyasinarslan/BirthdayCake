@@ -14,6 +14,14 @@ function qs(sel) {
     return document.querySelector(sel);
 }
 
+function setFavicon(emoji) {
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/svg+xml';
+    link.rel = 'icon';
+    link.href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${emoji}</text></svg>`;
+    document.getElementsByTagName('head')[0].appendChild(link);
+}
+
 function applyConfig() {
     document.title = Config.texts.title;
     const setTxt = (sel, txt) => { const el = qs(sel); if(el) el.textContent = txt; };
@@ -40,6 +48,10 @@ function showCakeAndHidePermission() {
 
     if (permissionScreen) permissionScreen.style.display = 'none';
     if (cake) cake.style.display = 'block';
+
+    // Update browser tab for the celebration
+    document.title = Config.texts.title;
+    setFavicon('🎂');
 
     // If user doesn't blow for 5 seconds after cake appears, show a gentle hint
     scheduleBlowHint();
@@ -225,6 +237,10 @@ async function initMicAndStart() {
         rafId = null;
     }
 
+    // Set browser tab for permission stage
+    document.title = Config.texts.permissionTitle;
+    setFavicon('🎤');
+
     try {
         setPermissionStatus(Config.texts.micRequesting);
 
@@ -286,6 +302,10 @@ function checkDateAccess() {
         
         if (permScreen) permScreen.style.display = 'none';
         if (waitScreen) waitScreen.style.display = 'flex';
+
+        if (Config.texts.waitBrowserTitle) {
+            document.title = Config.texts.waitBrowserTitle;
+        }
         
         startCountdown(targetDate);
         return false;
@@ -375,6 +395,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 const permScreen = qs('#permission-screen');
                 if (waitScreen) waitScreen.style.display = 'none';
                 if (permScreen) permScreen.style.display = 'flex';
+                document.title = Config.texts.permissionTitle;
+                setFavicon('🎤');
             }
         });
     }

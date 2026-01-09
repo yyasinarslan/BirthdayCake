@@ -8,7 +8,8 @@ const Config = {
     // Kullanıcı arayüzünde görünen metinler
     texts: {
         title: "Happy Birthday", // Tarayıcı sekmesindeki başlık
-        permissionTitle: "🎤 Mikrofon İzni Gerekli", // İzin ekranı başlığı
+        waitBrowserTitle: "...", // Bekleme ekranındayken görünecek gizli başlık
+        permissionTitle: "Mikrofon İzni Gerekli", // İzin ekranı başlığı
         permissionStatus: "Sürpriz için lütfen mikrofon izni ver.", // İzin durumu mesajı
         permissionBtn: "Mikrofonu Aç", // Buton metni
         permissionHint: "İzin verdikten sonra sürpriz ekrana gelecek 😋", // Buton altındaki ipucu
@@ -34,8 +35,8 @@ const Config = {
         micDenied: 'Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.', // İzin reddedilirse
         micNotFound: 'Mikrofon bulunamadı. Cihazında mikrofon olduğundan emin ol.', // Mikrofon yoksa
         micError: 'Mikrofon başlatılamadı. Lütfen tekrar dene.', // Genel hata
-        waitTitle: "Henüz Zamanı Gelmedi! ⏳", // Tarih gelmediyse başlık
-        waitMessage: "Sürprizi görmek için doğum gününü beklemen gerekiyor! 📅" // Tarih gelmediyse mesaj
+        waitTitle: "Henüz Değil... 🔒", // Tarih gelmediyse başlık
+        waitMessage: "Kilit sayaç dolduğunda otomatik olarak açılacak." // Tarih gelmediyse mesaj
     },
     // Zamanlamalar (milisaniye cinsinden)
     timeouts: {
