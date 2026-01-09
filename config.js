@@ -1,4 +1,6 @@
 const Config = {
+    // Sürprizin açılacağı tarih (Yıl-Ay-Gün formatında: YYYY-MM-DD)
+    date: "2026-01-11", 
     // Kullanıcı arayüzünde görünen metinler
     texts: {
         title: "Happy Birthday", // Tarayıcı sekmesindeki başlık
@@ -27,7 +29,9 @@ const Config = {
         micRequesting: 'Mikrofon izni isteniyor... Lütfen "İzin ver" seç.', // İzin istenirken
         micDenied: 'Mikrofon izni verilmedi. Tarayıcıdan mikrofon iznini açıp tekrar dene.', // İzin reddedilirse
         micNotFound: 'Mikrofon bulunamadı. Cihazında mikrofon olduğundan emin ol.', // Mikrofon yoksa
-        micError: 'Mikrofon başlatılamadı. Lütfen tekrar dene.' // Genel hata
+        micError: 'Mikrofon başlatılamadı. Lütfen tekrar dene.', // Genel hata
+        waitTitle: "Henüz Zamanı Gelmedi! ⏳", // Tarih gelmediyse başlık
+        waitMessage: "Sürprizi görmek için doğum gününü beklemen gerekiyor! 📅" // Tarih gelmediyse mesaj
     },
     // Zamanlamalar (milisaniye cinsinden)
     timeouts: {

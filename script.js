@@ -5,6 +5,7 @@ let data = null;
 let rafId = null;
 let blowHintTimeoutId = null;
 let blowHintEl = null;
+let balloonInterval = null;
 
 let showLetterTimeoutId = null;
 let slideshowInterval = null;
@@ -23,6 +24,8 @@ function applyConfig() {
     setTxt('#permission-btn', Config.texts.permissionBtn);
     setTxt('.permission-hint', Config.texts.permissionHint);
     setHtml('#message', Config.texts.cakeMessage);
+    setTxt('#wait-title', Config.texts.waitTitle);
+    setTxt('#wait-message', Config.texts.waitMessage);
     setTxt('.paper-title', Config.texts.modalTitle);
 
     const root = document.documentElement;
@@ -158,6 +161,11 @@ function closeLetter() {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
     }
+    // Eğer mum üflendiyse ve mektup kapatılıyorsa tekrar oynat butonunu göster
+    if (hasBlown) {
+        const replayBtn = qs('#replay-btn');
+        if (replayBtn) replayBtn.style.display = 'block';
+    }
 }
 
 function scheduleLetterAfterBlow() {
@@ -183,6 +191,9 @@ function resetLetterUI() {
         letter.style.display = 'none';
         letter.classList.remove('show');
     }
+
+    const replayBtn = qs('#replay-btn');
+    if (replayBtn) replayBtn.style.display = 'none';
 }
 
 function detectBlow() {
@@ -251,6 +262,32 @@ async function initMicAndStart() {
     }
 }
 
+function checkDateAccess() {
+    if (!Config.date) return true; // Tarih ayarlanmamışsa her zaman çalışır
+
+    // Config.date formatı: "YYYY-MM-DD"
+    const parts = Config.date.split('-');
+    // Javascript'te aylar 0-11 arasıdır, o yüzden ay kısmından 1 çıkarıyoruz
+    const targetDate = new Date(parts[0], parts[1] - 1, parts[2]);
+    const now = new Date();
+
+    // Sadece gün kontrolü yapmak için saatleri sıfırlıyoruz
+    targetDate.setHours(0, 0, 0, 0);
+    now.setHours(0, 0, 0, 0);
+
+    // Eğer şu anki tarih, hedef tarihten küçükse (daha gelmediyse)
+    if (now < targetDate) {
+        const waitScreen = qs('#wait-screen');
+        const permScreen = qs('#permission-screen');
+        
+        if (permScreen) permScreen.style.display = 'none';
+        if (waitScreen) waitScreen.style.display = 'flex';
+        
+        return false;
+    }
+    return true;
+}
+
 // Start after DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
     applyConfig();
@@ -288,7 +325,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Try once automatically (works on many browsers). If the browser requires a user gesture,
     // the overlay remains and the user can click the button.
-    initMicAndStart();
+    // Önce tarihi kontrol et, eğer günüyse başlat
+    if (checkDateAccess()) {
+        initMicAndStart();
+    }
+
+    const replayBtn = qs('#replay-btn');
+    if (replayBtn) {
+        replayBtn.addEventListener('click', resetExperience);
+    }
 });
 
 function blowOutCandles() {
@@ -304,12 +349,12 @@ function blowOutCandles() {
         rafId = null;
     }
 
-    const flames = document.querySelectorAll('.flame');
-    flames.forEach(flame => {
+    const flame = document.querySelector('.flame');
+    if (flame) {
         flame.style.transition = `opacity ${Config.timeouts.flameFade / 1000}s ease-out`;
         flame.style.opacity = 0;
         setTimeout(() => (flame.style.display = 'none'), Config.timeouts.flameFade);
-    });
+    }
 
     startBalloonLoop();
     scheduleLetterAfterBlow();
@@ -332,7 +377,8 @@ function blowOutCandles() {
 function startBalloonLoop() {
     const container = document.getElementById('balloon-container');
 
-    setInterval(() => {
+    if (balloonInterval) clearInterval(balloonInterval);
+    balloonInterval = setInterval(() => {
         const balloon = document.createElement('div');
         balloon.classList.add('balloon');
 
@@ -399,4 +445,26 @@ function stopSlideshow() {
         clearInterval(slideshowInterval);
         slideshowInterval = null;
     }
+}
+
+function resetExperience() {
+    const message = qs('#message');
+    if (message) message.style.display = 'none';
+
+    const container = document.getElementById('balloon-container');
+    if (container) container.innerHTML = '';
+
+    if (balloonInterval) {
+        clearInterval(balloonInterval);
+        balloonInterval = null;
+    }
+
+    const flame = document.querySelector('.flame');
+    if (flame) {
+        flame.style.transition = 'none';
+        flame.style.opacity = 1;
+        flame.style.display = 'block';
+    }
+
+    initMicAndStart();
 }
