@@ -25,7 +25,7 @@ const Config = {
                 <div class="paper-text">
                     <p>Bugüüün canım aşkımın doğum günüüü 🥳,</p>
                     <p>Doğum günün kutlu olsun hayatımmm 🎂🎊</p>
-                    <pİyi ki varsın iyi ki hayatımdasınnn seninle geçen her gün benim için bir hediyeee</p>
+                    <p>İyi ki varsın iyi ki hayatımdasınnn seninle geçen her gün benim için bir hediyeee</p>
                     <p>Yeni yaşında yüzünden gülümseme hiç eksik olmasın (hayatından da benn 😋)</p>
                     <p>Seni çooook seviyorummm 🤍</p>
                     <p class="signature">Sana çok aşık olan sevgilinnn,<br><strong>Yasin</strong></p>
