@@ -366,6 +366,19 @@ window.addEventListener('DOMContentLoaded', () => {
         initMicAndStart();
     }
 
+    const adminTrigger = qs('#admin-trigger');
+    if (adminTrigger) {
+        adminTrigger.addEventListener('click', () => {
+            const pwd = prompt("Admin Girişi:");
+            if (pwd === Config.adminPassword) {
+                const waitScreen = qs('#wait-screen');
+                const permScreen = qs('#permission-screen');
+                if (waitScreen) waitScreen.style.display = 'none';
+                if (permScreen) permScreen.style.display = 'flex';
+            }
+        });
+    }
+
     const replayBtn = qs('#replay-btn');
     if (replayBtn) {
         replayBtn.addEventListener('click', resetExperience);
@@ -385,12 +398,12 @@ function blowOutCandles() {
         rafId = null;
     }
 
-    const flame = document.querySelector('.flame');
-    if (flame) {
+    const flames = document.querySelectorAll('.flame');
+    flames.forEach(flame => {
         flame.style.transition = `opacity ${Config.timeouts.flameFade / 1000}s ease-out`;
         flame.style.opacity = 0;
         setTimeout(() => (flame.style.display = 'none'), Config.timeouts.flameFade);
-    }
+    });
 
     startBalloonLoop();
     scheduleLetterAfterBlow();
@@ -495,12 +508,12 @@ function resetExperience() {
         balloonInterval = null;
     }
 
-    const flame = document.querySelector('.flame');
-    if (flame) {
+    const flames = document.querySelectorAll('.flame');
+    flames.forEach(flame => {
         flame.style.transition = 'none';
         flame.style.opacity = 1;
         flame.style.display = 'block';
-    }
+    });
 
     initMicAndStart();
 }

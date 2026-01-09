@@ -3,6 +3,8 @@ const Config = {
     date: "2026-01-11", 
     // Sürprizin açılacağı saat (Saat-Dakika formatında: HH:MM)
     time: "20:00",
+    // Gizli admin girişi şifresi
+    adminPassword: "123",
     // Kullanıcı arayüzünde görünen metinler
     texts: {
         title: "Happy Birthday", // Tarayıcı sekmesindeki başlık
