@@ -283,9 +283,41 @@ function checkDateAccess() {
         if (permScreen) permScreen.style.display = 'none';
         if (waitScreen) waitScreen.style.display = 'flex';
         
+        startCountdown(targetDate);
         return false;
     }
     return true;
+}
+
+function startCountdown(targetDate) {
+    const countdownEl = qs('#countdown');
+    if (!countdownEl) return;
+
+    const update = () => {
+        const now = new Date().getTime();
+        const distance = targetDate.getTime() - now;
+
+        if (distance < 0) {
+            // Süre dolduysa sayfayı yenile
+            location.reload();
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownEl.innerHTML = `
+            <div class="time-unit"><span>${days}</span><label>Gün</label></div>
+            <div class="time-unit"><span>${hours}</span><label>Saat</label></div>
+            <div class="time-unit"><span>${minutes}</span><label>Dk</label></div>
+            <div class="time-unit"><span>${seconds}</span><label>Sn</label></div>
+        `;
+    };
+
+    update();
+    setInterval(update, 1000);
 }
 
 // Start after DOM is ready
